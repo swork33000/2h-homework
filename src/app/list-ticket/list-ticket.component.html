@@ -1,11 +1,19 @@
-<p>list-ticket works!</p>
 <h2>Tickets</h2>
 <div>
-    <button (click)="createTicket()"> Create a new ticket</button>
+  <button (click)="createTicket('xxx')">Create a new ticket</button>
 </div>
-<ul>
-    <li *ngFor="let ticket of tickets$ | async" (click)="goToTicketDetail(ticket.id)">
-        {{ticket|json}}
-        Ticket: {{ ticket.id }}, {{ ticket.description }}
-    </li>
-</ul>
+<mat-spinner *ngIf="loading"></mat-spinner>
+<div *ngIf="apiError">
+  Api Error
+</div>
+
+<mat-list *ngIf=" !loading &&  !loading  " role="list">
+  <mat-list-item
+    *ngFor="let ticket of tickets$ | async"
+    (click)="goToTicketDetail(ticket.id)"
+    role="listitem"
+    >{{ ticket.id }} : {{ ticket.description }}
+    <br>
+    {{ ticket |json }}
+  </mat-list-item>
+</mat-list>

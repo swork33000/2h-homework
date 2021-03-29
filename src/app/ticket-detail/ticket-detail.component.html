@@ -8,4 +8,9 @@
 <div *ngIf="ticketDetail$ | async">
     ticketDetail {{ticketDetail$|json}}
 </div>
+<div  *ngIf="id">
+    <button  (click)="updateTicket(id)">
+        Update this ticket ({{id}})
+    </button> 
 
+</div>
