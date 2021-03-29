@@ -1,0 +1,11 @@
+<div >
+    <button (click)="goToList()">
+        Go to list
+    </button> 
+
+</div>
+
+<div *ngIf="ticketDetail$ | async">
+    ticketDetail {{ticketDetail$|json}}
+</div>
+
